@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     frontend.cpp \
+    game.cpp \
     main.cpp \
     mainwindow.cpp \
     newgamewindow.cpp
 
 HEADERS += \
     frontend.h \
+    game.h \
     mainwindow.h \
     newgamewindow.h
 
