@@ -1,8 +1,6 @@
 #ifndef FRONTEND_H
 #define FRONTEND_H
 
-#include <memory>
-
 #include "newgamewindow.h"
 
 class Frontend
@@ -12,7 +10,7 @@ public:
     void start();
 
  private:
-    std::unique_ptr<NewGameWindow> _new_game_window;
+    NewGameWindow _new_game_window;
 };
 
 #endif // FRONTEND_H
