@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     frontend.cpp \
     game.cpp \
+    gameoptions.cpp \
     main.cpp \
     mainwindow.cpp \
     newgamewindow.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     frontend.h \
     game.h \
+    gameoptions.h \
     mainwindow.h \
     newgamewindow.h
 

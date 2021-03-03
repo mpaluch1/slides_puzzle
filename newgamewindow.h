@@ -15,8 +15,13 @@ public:
     explicit NewGameWindow(QWidget *parent = nullptr);
     ~NewGameWindow();
 
+private slots:
+    void on_play_button_clicked();
+
 private:
     Ui::NewGameWindow *ui;
+
+    void _setup();
 };
 
 #endif // NEWGAMEWINDOW_H
