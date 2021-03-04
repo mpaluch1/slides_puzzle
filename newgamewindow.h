@@ -2,12 +2,13 @@
 #define NEWGAMEWINDOW_H
 
 #include <QDialog>
+#include "iabletonotify.h"
 
 namespace Ui {
 class NewGameWindow;
 }
 
-class NewGameWindow : public QDialog
+class NewGameWindow : public QDialog, IAbleToNotify
 {
     Q_OBJECT
 

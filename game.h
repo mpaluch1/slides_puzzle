@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <memory>
+
 #include "frontend.h"
 
 class Game
@@ -10,6 +12,7 @@ public:
     void start();
 
 private:
+    std::shared_ptr<NotificationBox> _box;
     Frontend _frontend;
 };
 

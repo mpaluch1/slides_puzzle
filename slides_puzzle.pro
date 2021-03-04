@@ -12,16 +12,20 @@ SOURCES += \
     frontend.cpp \
     game.cpp \
     gameoptions.cpp \
+    iabletonotify.cpp \
     main.cpp \
     mainwindow.cpp \
-    newgamewindow.cpp
+    newgamewindow.cpp \
+    notificationbox.cpp
 
 HEADERS += \
     frontend.h \
     game.h \
     gameoptions.h \
+    iabletonotify.h \
     mainwindow.h \
-    newgamewindow.h
+    newgamewindow.h \
+    notificationbox.h
 
 FORMS += \
     mainwindow.ui \
