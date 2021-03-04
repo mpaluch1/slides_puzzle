@@ -8,6 +8,12 @@ Game::Game()
 
 void Game::start()
 {
-    _frontend.set_notification_box(_box);
-    _frontend.start();
+    _view.set_notification_box(_box);
+    _view.start();
+}
+
+void Game::new_game(const std::string &name, int size)
+{
+    auto options = GameOptions(name, size);
+    _model.start_new_game(options);
 }

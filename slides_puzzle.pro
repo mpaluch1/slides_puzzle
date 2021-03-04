@@ -9,9 +9,11 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    backend.cpp \
     frontend.cpp \
     game.cpp \
     gameoptions.cpp \
+    gamestate.cpp \
     iabletonotify.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -19,9 +21,11 @@ SOURCES += \
     notificationbox.cpp
 
 HEADERS += \
+    backend.h \
     frontend.h \
     game.h \
     gameoptions.h \
+    gamestate.h \
     iabletonotify.h \
     mainwindow.h \
     newgamewindow.h \
