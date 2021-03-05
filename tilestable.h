@@ -2,6 +2,7 @@
 #define TILESTABLE_H
 
 #include <vector>
+#include <utility>
 
 #include "tile.h"
 
@@ -20,6 +21,8 @@ private:
 
     void _initialise_tiles();
     void _sort_tiles();
+    std::pair<int, int> _find_empty_slot();
+
 };
 
 #endif // TILESTABLE_H
