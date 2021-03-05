@@ -1,6 +1,8 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
+#include <chrono>
+
 #include "gameoptions.h"
 #include "tilestable.h"
 
@@ -12,6 +14,7 @@ public:
 private:
     GameOptions _options;
     TilesTable _tiles_table;
+    std::chrono::time_point<std::chrono::steady_clock> _start_time;
 };
 
 #endif // GAMESTATE_H

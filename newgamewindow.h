@@ -8,7 +8,7 @@ namespace Ui {
 class NewGameWindow;
 }
 
-class NewGameWindow : public QDialog, IAbleToNotify
+class NewGameWindow : public QDialog, public IAbleToNotify
 {
     Q_OBJECT
 
