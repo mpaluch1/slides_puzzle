@@ -18,7 +18,9 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newgamewindow.cpp \
-    notificationbox.cpp
+    notificationbox.cpp \
+    tile.cpp \
+    tilestable.cpp
 
 HEADERS += \
     backend.h \
@@ -29,7 +31,9 @@ HEADERS += \
     iabletonotify.h \
     mainwindow.h \
     newgamewindow.h \
-    notificationbox.h
+    notificationbox.h \
+    tile.h \
+    tilestable.h
 
 FORMS += \
     mainwindow.ui \
