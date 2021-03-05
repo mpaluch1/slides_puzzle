@@ -6,6 +6,7 @@ class Tile
 {
 public:
     Tile();
+    // TODO move constructor
 
     int index;
 };
