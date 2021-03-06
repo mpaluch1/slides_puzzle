@@ -1,5 +1,7 @@
 #include "game.h"
 
+#include <spdlog/spdlog.h>
+
 Game::Game()
 {
     _box = std::make_shared<NotificationBox>(*this);
@@ -7,12 +9,15 @@ Game::Game()
 
 void Game::start()
 {
+    spdlog::info("Starting game");
+
     _view.set_notification_box(_box);
     _view.start();
 }
 
 void Game::new_game(const std::string &name, int size)
 {
+    spdlog::info("Creating new game with name {} and size {}", name, size);
     auto options = GameOptions(name, size);
     _model.start_new_game(options);
     _view.show_game_window();
@@ -21,6 +26,8 @@ void Game::new_game(const std::string &name, int size)
 
 void Game::move_tile(int row, int column)
 {
+    spdlog::debug("Moving tile at {},{}", row, column);
+
     (void)row;(void)column;
 }
 

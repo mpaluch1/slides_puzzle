@@ -1,9 +1,11 @@
 #include "tilestable.h"
 
 #include <array>
-#include <iostream>
 #include <random>
+#include <sstream>
 #include <utility>
+
+#include <spdlog/spdlog.h>
 
 TilesTable::TilesTable()
 {
@@ -23,6 +25,7 @@ void TilesTable::set_table_size(int size)
 
 void TilesTable::shuffle(int moves)
 {
+    spdlog::debug("Shuffling tiles in table");
     _sort_tiles();
 
     std::random_device rd;
@@ -75,12 +78,14 @@ tile_matrix TilesTable::get_tiles()
 
 void TilesTable::print_state()
 {
-    for (unsigned i = 0; i < _table.size(); ++i) {
+    spdlog::debug("State of tiles table:");
+    for (unsigned i = 0; i < _table.size(); ++i) {  
+        std::stringstream ss;
         for (unsigned j = 0; j < _table[i].size(); ++j) {
-            std::cout << _table[i][j].index << ' ';
+            ss << _table[i][j].index << ' ';
         }
 
-        std::cout << std::endl;
+        spdlog::debug(ss.str());
     }
 }
 
