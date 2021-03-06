@@ -19,6 +19,9 @@ public:
 
     void display_tiles(const std::map<std::pair<int, int>, int> &tiles);
 
+protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+
 private:
     Ui::MainWindow *ui;
 };

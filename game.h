@@ -17,6 +17,7 @@ public:
     void start();
 
     void new_game(const std::string &name, int size);
+    void move_tile(int row, int column);
 
 private:
     std::shared_ptr<NotificationBox> _box;

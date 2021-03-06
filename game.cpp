@@ -15,10 +15,13 @@ void Game::new_game(const std::string &name, int size)
 {
     auto options = GameOptions(name, size);
     _model.start_new_game(options);
-
-    // get tiles and show them
     _view.show_game_window();
     _view.display_tiles(_transform_tiles_for_frontend());
+}
+
+void Game::move_tile(int row, int column)
+{
+    (void)row;(void)column;
 }
 
 std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
