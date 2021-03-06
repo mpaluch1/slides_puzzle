@@ -43,3 +43,16 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/spdlog/build/release/ -lspdlog
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/spdlog/build/debug/ -lspdlog
+else:unix: LIBS += -L$$PWD/spdlog/build/ -lspdlog
+
+INCLUDEPATH += $$PWD/spdlog/include
+DEPENDPATH += $$PWD/spdlog/include
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/release/libspdlog.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/debug/libspdlog.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/release/spdlog.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/debug/spdlog.lib
+else:unix: PRE_TARGETDEPS += $$PWD/spdlog/build/libspdlog.a
