@@ -68,6 +68,11 @@ void TilesTable::shuffle(int moves)
     print_state();
 }
 
+tile_matrix TilesTable::get_tiles()
+{
+    return _table;
+}
+
 void TilesTable::print_state()
 {
     for (unsigned i = 0; i < _table.size(); ++i) {

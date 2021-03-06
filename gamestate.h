@@ -11,6 +11,8 @@ class GameState
 public:
     GameState(const GameOptions &options);
 
+    tile_matrix get_tiles();
+
 private:
     GameOptions _options;
     TilesTable _tiles_table;

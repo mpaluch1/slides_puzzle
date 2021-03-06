@@ -6,6 +6,8 @@
 
 #include "tile.h"
 
+using tile_matrix = std::vector<std::vector<Tile>>;
+
 class TilesTable
 {
 public:
@@ -13,11 +15,12 @@ public:
 
     void set_table_size(int size);
     void shuffle(int moves = 50); //TODO change magic number
+    tile_matrix get_tiles();
 
     void print_state();
 
 private:
-    std::vector<std::vector<Tile>> _table;
+    tile_matrix _table;
 
     void _initialise_tiles();
     void _sort_tiles();
