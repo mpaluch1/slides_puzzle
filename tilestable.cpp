@@ -98,6 +98,24 @@ bool TilesTable::move_tile(int row, int col)
     return true;
 }
 
+bool TilesTable::is_solved()
+{
+    for (unsigned int i = 0;i < _table.size(); ++i) {
+        for (unsigned int j = 0; j < _table[i].size(); ++j) {
+            if (_table[i][j].index == -1) {
+                continue;
+            }
+
+            int calc_idx = i * _table.size() + j;
+            if (_table[i][j].index != calc_idx) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 void TilesTable::print_state()
 {
     spdlog::debug("State of tiles table:");

@@ -13,6 +13,7 @@ public:
 
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
+    bool is_solved();
 
 private:
     GameOptions _options;

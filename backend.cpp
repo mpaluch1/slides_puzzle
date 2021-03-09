@@ -19,3 +19,8 @@ bool Backend::move_tile(int row, int col)
 {
     return _state->move_tile(row, col);
 }
+
+bool Backend::is_solved()
+{
+    return _state->is_solved();
+}

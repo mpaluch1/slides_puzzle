@@ -29,9 +29,15 @@ void Game::move_tile(int row, int column)
     spdlog::debug("Moving tile at {},{}", row, column);
 
     auto moved = _model.move_tile(row, column);
-    //TODO check if solved
-    if (moved) {
-        _view.display_tiles(_transform_tiles_for_frontend());
+    if (!moved) {
+        return;
+    }
+
+    _view.display_tiles(_transform_tiles_for_frontend());
+    auto solved = _model.is_solved();
+    if (solved) {
+        spdlog::info("Solved!");
+        // TODO show gratulations window
     }
 }
 

@@ -21,3 +21,8 @@ bool GameState::move_tile(int row, int col)
 {
     return _tiles_table.move_tile(row, col);
 }
+
+bool GameState::is_solved()
+{
+    return _tiles_table.is_solved();
+}

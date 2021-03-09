@@ -18,6 +18,7 @@ public:
     void shuffle(int moves = 50); //TODO change magic number
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
+    bool is_solved();
 
     void print_state();
 
