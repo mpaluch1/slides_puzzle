@@ -19,6 +19,8 @@ SOURCES += \
     mainwindow.cpp \
     newgamewindow.cpp \
     notificationbox.cpp \
+    result.cpp \
+    resultstable.cpp \
     tile.cpp \
     tilestable.cpp
 
@@ -32,6 +34,8 @@ HEADERS += \
     mainwindow.h \
     newgamewindow.h \
     notificationbox.h \
+    result.h \
+    resultstable.h \
     tile.h \
     tilestable.h
 

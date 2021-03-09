@@ -6,6 +6,8 @@
 #include "gameoptions.h"
 #include "tilestable.h"
 
+class Result;
+
 class GameState
 {
 public:
@@ -14,6 +16,7 @@ public:
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
     bool is_solved();
+    Result save_result();
 
 private:
     GameOptions _options;

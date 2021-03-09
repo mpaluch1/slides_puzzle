@@ -37,7 +37,8 @@ void Game::move_tile(int row, int column)
     auto solved = _model.is_solved();
     if (solved) {
         spdlog::info("Solved!");
-        // TODO show gratulations window
+        auto result = _model.save_result();
+        // TODO show congratulations screen
     }
 }
 

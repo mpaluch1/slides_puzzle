@@ -1,5 +1,7 @@
 #include "backend.h"
 
+#include "result.h"
+
 Backend::Backend()
 {
 
@@ -23,4 +25,12 @@ bool Backend::move_tile(int row, int col)
 bool Backend::is_solved()
 {
     return _state->is_solved();
+}
+
+Result Backend::save_result()
+{
+    auto result = _state->save_result();
+    _results_table.add(result);
+
+    return result;
 }
