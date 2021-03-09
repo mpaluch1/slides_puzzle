@@ -1,6 +1,8 @@
 #include "tilestable.h"
 
+#include <algorithm>
 #include <array>
+#include <cstdlib>
 #include <random>
 #include <sstream>
 #include <utility>
@@ -31,14 +33,8 @@ void TilesTable::shuffle(int moves)
     std::random_device rd;
     std::mt19937 mt(rd());
     std::uniform_int_distribution<int> dist(0, 3);
-    const std::array<std::pair<int, int>, 4> dir_vecs = {{
-        {0, -1},
-        {1, 0},
-        {0, 1},
-        {-1, 0}
-    }};
 
-    auto empty_idx = _find_empty_slot();
+    auto empty_idx = _get_tile_with_index(-1);
     // for every move count
     while (moves--) {
         auto swapable = false;
@@ -49,7 +45,7 @@ void TilesTable::shuffle(int moves)
         while (!swapable) {
             // get random direction from generator
             auto rand_dir = dist(mt);
-            swap_vec = dir_vecs[rand_dir];
+            swap_vec = _legal_dir_vecs[rand_dir];
 
             new_row_idx = empty_idx.first + swap_vec.first;
             new_col_idx = empty_idx.second + swap_vec.second;
@@ -74,6 +70,32 @@ void TilesTable::shuffle(int moves)
 tile_matrix TilesTable::get_tiles()
 {
     return _table;
+}
+
+bool TilesTable::move_tile(int row, int col)
+{
+    const auto coords = _get_tile_with_index(-1);
+
+    if (row < 0 || col < 0) {
+        spdlog::debug("Invalid tile position {},{}", row, col);
+        return false;
+    }
+
+    // if moved tile isn't next to empty then slot don't move
+    const std::pair<int, int> vec =
+            std::make_pair(std::abs(coords.first - row), std::abs(coords.second - col));
+
+    auto result = std::find(std::begin(_legal_dir_vecs), std::end(_legal_dir_vecs), vec);
+    if (result == std::end(_legal_dir_vecs)) {
+        spdlog::warn("Can't move tile from {},{} to {},{}",
+                     row, col, coords.first, coords.second);
+        return false;
+    }
+
+    std::swap(_table[coords.first][coords.second], _table[row][col]);
+    spdlog::debug("Moved tile from {},{} to {},{}",
+                  row, col, coords.first, coords.second);
+    return true;
 }
 
 void TilesTable::print_state()
@@ -119,11 +141,11 @@ void TilesTable::_sort_tiles()
     }
 }
 
-std::pair<int, int> TilesTable::_find_empty_slot()
+std::pair<int, int> TilesTable::_get_tile_with_index(int idx)
 {
     for (unsigned i = 0; i < _table.size(); ++i) {
         for (unsigned j = 0; j < _table[i].size(); ++j) {
-            if (_table[i][j].index == -1) {
+            if (_table[i][j].index == idx) {
                 return std::make_pair(i, j);
             }
         }

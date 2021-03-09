@@ -8,8 +8,6 @@
 
 #include "ui_mainwindow.h"
 
-#include <QDebug>
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -24,6 +22,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::display_tiles(const std::map<std::pair<int, int>, int> &tiles)
 {
+    _clear_tiles();
+
     for (const auto &tile : tiles) {
         auto label = new QLabel(ui->gridLayoutWidget);
         auto idx = std::to_string(tile.second);
@@ -56,3 +56,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 
     _box->notify_tile_clicked(row, col);
 }
+
+#include <iostream>
+void MainWindow::_clear_tiles()
+{
+    qDeleteAll(ui->gridLayoutWidget->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
+}
+

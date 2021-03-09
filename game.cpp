@@ -28,7 +28,11 @@ void Game::move_tile(int row, int column)
 {
     spdlog::debug("Moving tile at {},{}", row, column);
 
-    (void)row;(void)column;
+    auto moved = _model.move_tile(row, column);
+    //TODO check if solved
+    if (moved) {
+        _view.display_tiles(_transform_tiles_for_frontend());
+    }
 }
 
 std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()

@@ -24,5 +24,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+
+    void _clear_tiles();
 };
 #endif // MAINWINDOW_H

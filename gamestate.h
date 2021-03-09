@@ -12,6 +12,7 @@ public:
     GameState(const GameOptions &options);
 
     tile_matrix get_tiles();
+    bool move_tile(int row, int col);
 
 private:
     GameOptions _options;

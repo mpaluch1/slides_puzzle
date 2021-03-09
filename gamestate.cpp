@@ -16,3 +16,8 @@ tile_matrix GameState::get_tiles()
 {
     return _tiles_table.get_tiles();
 }
+
+bool GameState::move_tile(int row, int col)
+{
+    return _tiles_table.move_tile(row, col);
+}
