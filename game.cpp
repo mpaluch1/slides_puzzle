@@ -1,6 +1,10 @@
 #include "game.h"
 
+#include <chrono>
+
 #include <spdlog/spdlog.h>
+
+#include "result.h"
 
 Game::Game()
 {
@@ -39,6 +43,7 @@ void Game::move_tile(int row, int column)
         spdlog::info("Solved!");
         auto result = _model.save_result();
         // TODO show congratulations screen
+        _game_won(result);
     }
 }
 
@@ -55,4 +60,21 @@ std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
     }
 
     return tiles_map;
+}
+
+void Game::_game_won(const Result &result)
+{
+    auto name = result.options.player_name;
+
+    std::time_t tmp = std::chrono::system_clock::to_time_t(result.date);
+    auto date = std::ctime(&tmp);
+
+    auto seconds = result.elapsed_time % 60;
+    auto minutes = result.elapsed_time / 60;
+    auto hours = result.elapsed_time / 3600;
+
+    char time_buf[9] = {0};
+    std::snprintf(time_buf, 9, "%02d:%02d:%02d", hours, minutes, seconds);
+
+    _view.show_congrats_window(name, {time_buf}, date);
 }

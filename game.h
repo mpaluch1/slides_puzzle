@@ -10,6 +10,8 @@
 #include "frontend.h"
 #include "gameoptions.h"
 
+class Result;
+
 class Game
 {
 public:
@@ -25,6 +27,7 @@ private:
     Backend _model;
 
     std::map<std::pair<int, int>, int> _transform_tiles_for_frontend();
+    void _game_won(const Result &result);
 };
 
 #endif // GAME_H

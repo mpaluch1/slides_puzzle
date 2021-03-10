@@ -22,3 +22,9 @@ void Frontend::display_tiles(const std::map<std::pair<int, int>, int> &tiles)
 {
     _main_window.display_tiles(tiles);
 }
+
+void Frontend::show_congrats_window(const std::string &name, const std::string &time, const std::string &date)
+{
+    _congrats_window.set_result(name, time, date);
+    _congrats_window.show();
+}
