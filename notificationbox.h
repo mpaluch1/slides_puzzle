@@ -10,7 +10,8 @@ class NotificationBox
 public:
     NotificationBox(Game &game);
 
-    void notify_new_game(const std::string &player_name, int size, bool renew);
+    void notify_new_game(const std::string &player_name, int size);
+    void notify_renew_game();
     void notify_tile_clicked(int row, int column);
 
 private:

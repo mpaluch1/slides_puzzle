@@ -19,18 +19,29 @@ void Game::start()
     _view.start();
 }
 
-void Game::new_game(const std::string &name, int size, bool renew)
+void Game::new_game(const std::string &name, int size)
 {
     spdlog::info("Creating new game with name {} and size {}", name, size);
 
     auto options = GameOptions(name, size);
-    if (renew && _cached_options) {
-        options = *_cached_options;
-    }
-
     _cached_options = std::make_unique<GameOptions>(options);
 
     _model.start_new_game(options);
+    _view.show_game_window();
+    _view.display_tiles(_transform_tiles_for_frontend());
+}
+
+void Game::renew_game()
+{
+    if (!_cached_options) {
+        spdlog::error("Trying to renew game without first start!");
+        return;
+    }
+
+    spdlog::info("Recreating game with name {} and size {}",
+                 _cached_options->player_name, _cached_options->problem_size);
+
+    _model.start_new_game(*_cached_options);
     _view.show_game_window();
     _view.display_tiles(_transform_tiles_for_frontend());
 }

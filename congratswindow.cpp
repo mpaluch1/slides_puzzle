@@ -22,7 +22,7 @@ void CongratsWindow::set_result(const std::string &name, const std::string &time
 
 void CongratsWindow::on_new_game_button_clicked()
 {
-    _box->notify_new_game("", -1, true);
+    _box->notify_renew_game();
 }
 
 void CongratsWindow::on_exit_button_clicked()

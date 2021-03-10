@@ -18,7 +18,8 @@ public:
     Game();
     void start();
 
-    void new_game(const std::string &name, int size, bool renew);
+    void new_game(const std::string &name, int size);
+    void renew_game();
     void move_tile(int row, int column);
 
 private:
