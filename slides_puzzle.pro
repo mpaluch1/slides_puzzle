@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     backend.cpp \
+    congratswindow.cpp \
     frontend.cpp \
     game.cpp \
     gameoptions.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     backend.h \
+    congratswindow.h \
     frontend.h \
     game.h \
     gameoptions.h \
@@ -40,6 +42,7 @@ HEADERS += \
     tilestable.h
 
 FORMS += \
+    congratswindow.ui \
     mainwindow.ui \
     newgamewindow.ui
 
