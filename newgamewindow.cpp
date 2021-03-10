@@ -27,5 +27,10 @@ void NewGameWindow::on_play_button_clicked()
     // TODO Change me to use model from somewhere
     auto problem_size = ui->problem_size_combo_box->currentIndex() + 2;
 
-    _box->notify_new_game(player_name.toStdString(), problem_size);
+    _box->notify_new_game(player_name.toStdString(), problem_size, false);
+}
+
+void NewGameWindow::on_exit_button_clicked()
+{
+    QCoreApplication::quit();
 }

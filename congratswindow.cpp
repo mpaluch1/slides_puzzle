@@ -19,3 +19,13 @@ void CongratsWindow::set_result(const std::string &name, const std::string &time
     ui->time_label->setText(QString::fromStdString(time));
     ui->date_label->setText(QString::fromStdString(date));
 }
+
+void CongratsWindow::on_new_game_button_clicked()
+{
+    _box->notify_new_game("", -1, true);
+}
+
+void CongratsWindow::on_exit_button_clicked()
+{
+    QCoreApplication::quit();
+}

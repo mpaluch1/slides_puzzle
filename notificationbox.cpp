@@ -8,9 +8,9 @@ NotificationBox::NotificationBox(Game &game)
 
 }
 
-void NotificationBox::notify_new_game(const std::string &player_name, int size)
+void NotificationBox::notify_new_game(const std::string &player_name, int size, bool renew)
 {
-    _game.new_game(player_name, size);
+    _game.new_game(player_name, size, renew);
 }
 
 void NotificationBox::notify_tile_clicked(int row, int column)

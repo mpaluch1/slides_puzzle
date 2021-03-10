@@ -19,10 +19,17 @@ void Game::start()
     _view.start();
 }
 
-void Game::new_game(const std::string &name, int size)
+void Game::new_game(const std::string &name, int size, bool renew)
 {
     spdlog::info("Creating new game with name {} and size {}", name, size);
+
     auto options = GameOptions(name, size);
+    if (renew && _cached_options) {
+        options = *_cached_options;
+    }
+
+    _cached_options = std::make_unique<GameOptions>(options);
+
     _model.start_new_game(options);
     _view.show_game_window();
     _view.display_tiles(_transform_tiles_for_frontend());
@@ -42,7 +49,6 @@ void Game::move_tile(int row, int column)
     if (solved) {
         spdlog::info("Solved!");
         auto result = _model.save_result();
-        // TODO show congratulations screen
         _game_won(result);
     }
 }
