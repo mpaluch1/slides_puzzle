@@ -6,7 +6,7 @@
 
 ResultsTable::ResultsTable()
 {
-
+    _table = _saver.load();
 }
 
 void ResultsTable::add(const Result &result)
@@ -20,4 +20,6 @@ void ResultsTable::add(const Result &result)
 
     auto size = result.options.problem_size;
     _table[size].push_back(result);
+
+    _saver.update(_table);
 }

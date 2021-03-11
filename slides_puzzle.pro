@@ -22,6 +22,7 @@ SOURCES += \
     notificationbox.cpp \
     result.cpp \
     resultstable.cpp \
+    resultstablesaver.cpp \
     tile.cpp \
     tilestable.cpp
 
@@ -38,6 +39,7 @@ HEADERS += \
     notificationbox.h \
     result.h \
     resultstable.h \
+    resultstablesaver.h \
     tile.h \
     tilestable.h
 
