@@ -22,3 +22,8 @@ void NotificationBox::notify_tile_clicked(int row, int column)
 {
     _game.move_tile(row, column);
 }
+
+void NotificationBox::notify_show_results_table()
+{
+    _game.show_results_table();
+}

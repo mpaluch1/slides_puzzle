@@ -21,6 +21,7 @@ public:
     void new_game(const std::string &name, int size);
     void renew_game();
     void move_tile(int row, int column);
+    void show_results_table(); // TODO size
 
 private:
     std::shared_ptr<NotificationBox> _box;

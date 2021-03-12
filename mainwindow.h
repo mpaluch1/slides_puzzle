@@ -22,6 +22,9 @@ public:
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
 
+private slots:
+    void on_results_table_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 

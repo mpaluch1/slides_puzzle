@@ -64,6 +64,11 @@ void Game::move_tile(int row, int column)
     }
 }
 
+void Game::show_results_table()
+{
+    _view.show_results_window();
+}
+
 std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
 {
     auto tiles = _model.get_tiles();

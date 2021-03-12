@@ -23,6 +23,7 @@ SOURCES += \
     result.cpp \
     resultstable.cpp \
     resultstablesaver.cpp \
+    resultswindow.cpp \
     tile.cpp \
     tilestable.cpp
 
@@ -40,13 +41,15 @@ HEADERS += \
     result.h \
     resultstable.h \
     resultstablesaver.h \
+    resultswindow.h \
     tile.h \
     tilestable.h
 
 FORMS += \
     congratswindow.ui \
     mainwindow.ui \
-    newgamewindow.ui
+    newgamewindow.ui \
+    resultswindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

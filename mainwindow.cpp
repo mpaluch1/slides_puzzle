@@ -63,3 +63,8 @@ void MainWindow::_clear_tiles()
     qDeleteAll(ui->gridLayoutWidget->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
 }
 
+
+void MainWindow::on_results_table_button_clicked()
+{
+    _box->notify_show_results_table();
+}
