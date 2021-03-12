@@ -6,6 +6,9 @@ CongratsWindow::CongratsWindow(QWidget *parent) :
     ui(new Ui::CongratsWindow)
 {
     ui->setupUi(this);
+    ui->name_label->setAlignment(Qt::AlignRight);
+    ui->time_label->setAlignment(Qt::AlignRight);
+    ui->date_label->setAlignment(Qt::AlignRight);
 }
 
 CongratsWindow::~CongratsWindow()
