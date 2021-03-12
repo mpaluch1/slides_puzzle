@@ -18,6 +18,11 @@ void NotificationBox::notify_renew_game()
     _game.renew_game();
 }
 
+void NotificationBox::notify_restart_game()
+{
+    _game.start();
+}
+
 void NotificationBox::notify_tile_clicked(int row, int column)
 {
     _game.move_tile(row, column);

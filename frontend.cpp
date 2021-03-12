@@ -12,6 +12,9 @@ void Frontend::start()
     _congrats_window.set_notification_box(_box);
     _results_window.set_notification_box(_box);
 
+    _main_window.hide();
+    _congrats_window.hide();
+
     _new_game_window.show();
 }
 

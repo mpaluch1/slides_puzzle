@@ -72,3 +72,8 @@ void MainWindow::on_exit_button_clicked()
 {
     QCoreApplication::quit();
 }
+
+void MainWindow::on_new_game_button_clicked()
+{
+    _box->notify_restart_game();
+}
