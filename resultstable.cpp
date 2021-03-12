@@ -11,11 +11,10 @@ ResultsTable::ResultsTable()
 
 void ResultsTable::add(const Result &result)
 {
-    std::time_t tmp = std::chrono::system_clock::to_time_t(result.date);
     spdlog::info("Added result with name {}, duration {} and date {} to results table",
                  result.options.player_name,
                  result.elapsed_time,
-                 std::ctime(&tmp)
+                 result.date_to_string()
                  );
 
     auto size = result.options.problem_size;

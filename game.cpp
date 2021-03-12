@@ -101,9 +101,7 @@ std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
 void Game::_game_won(const Result &result)
 {
     auto name = result.options.player_name;
-
-    std::time_t tmp = std::chrono::system_clock::to_time_t(result.date);
-    auto date = std::ctime(&tmp);
+    auto date = result.date_to_string();
 
     _view.show_congrats_window(name, _time_from_seconds(result.elapsed_time), date);
 }
@@ -140,11 +138,9 @@ result_view_t Game::_get_n_best_results(std::vector<Result> &results, int n)
             auto position = std::to_string(counter++);
             auto time = _time_from_seconds(res.elapsed_time);
             auto name = res.options.player_name;
+            auto date = res.date_to_string();
 
-            std::time_t tmp = std::chrono::system_clock::to_time_t(res.date);
-            auto date = std::ctime(&tmp);
-
-            std::array<std::string, 4> arr{position, time, name, std::string(date)};
+            std::array<std::string, 4> arr{position, time, name, date};
             return arr;
         }
     );

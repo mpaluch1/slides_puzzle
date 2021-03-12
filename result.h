@@ -16,6 +16,8 @@ public:
     int elapsed_time;
     date_t date;
     GameOptions options;
+
+    std::string date_to_string() const;
 };
 
 #endif // RESULT_H
