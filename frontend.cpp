@@ -38,3 +38,8 @@ void Frontend::show_results_window()
 {
     _results_window.show();
 }
+
+void Frontend::show_results(const result_view_t &to_show)
+{
+    _results_window.show_results(to_show);
+}

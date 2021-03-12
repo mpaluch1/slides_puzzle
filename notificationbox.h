@@ -13,7 +13,8 @@ public:
     void notify_new_game(const std::string &player_name, int size);
     void notify_renew_game();
     void notify_tile_clicked(int row, int column);
-    void notify_show_results_table(); // TODO size maybe?
+    void notify_show_results_table();
+    void notify_show_results(int problem_size);
 
 private:
     Game &_game;

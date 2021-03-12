@@ -21,7 +21,8 @@ public:
     void new_game(const std::string &name, int size);
     void renew_game();
     void move_tile(int row, int column);
-    void show_results_table(); // TODO size
+    void show_results_table();
+    void show_results(int problem_size);
 
 private:
     std::shared_ptr<NotificationBox> _box;
@@ -31,6 +32,8 @@ private:
 
     std::map<std::pair<int, int>, int> _transform_tiles_for_frontend();
     void _game_won(const Result &result);
+    std::string _time_from_seconds(int secs);
+    result_view_t _get_n_best_results(std::vector<Result> &results, int n);
 };
 
 #endif // GAME_H

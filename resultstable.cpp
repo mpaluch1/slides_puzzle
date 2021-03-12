@@ -23,3 +23,8 @@ void ResultsTable::add(const Result &result)
 
     _saver.update(_table);
 }
+
+std::vector<Result> ResultsTable::get(int problem_size)
+{
+    return _table[problem_size];
+}

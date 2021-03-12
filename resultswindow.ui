@@ -75,11 +75,11 @@
     <string>Pokaż</string>
    </property>
   </widget>
-  <widget class="QTableView" name="results_table_view">
+  <widget class="QTableWidget" name="results_table">
    <property name="geometry">
     <rect>
      <x>25</x>
-     <y>140</y>
+     <y>150</y>
      <width>541</width>
      <height>281</height>
     </rect>

@@ -27,3 +27,8 @@ void NotificationBox::notify_show_results_table()
 {
     _game.show_results_table();
 }
+
+void NotificationBox::notify_show_results(int problem_size)
+{
+    _game.show_results(problem_size);
+}

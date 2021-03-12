@@ -1,6 +1,7 @@
 #ifndef BACKEND_H
 #define BACKEND_H
 
+#include <vector>
 #include <memory>
 
 #include "gameoptions.h"
@@ -20,6 +21,7 @@ public:
     bool move_tile(int row, int col);
     bool is_solved();
     Result save_result();
+    std::vector<Result> get_result_table(int problem_size);
 
 private:
     std::unique_ptr<GameState> _state;

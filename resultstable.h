@@ -15,6 +15,7 @@ public:
     ResultsTable();
 
     void add(const Result &result);
+    std::vector<Result> get(int problem_size);
 
 private:
     res_table_t _table;

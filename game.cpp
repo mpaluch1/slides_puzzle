@@ -1,6 +1,8 @@
 #include "game.h"
 
+#include <algorithm>
 #include <chrono>
+#include <string>
 
 #include <spdlog/spdlog.h>
 
@@ -66,7 +68,19 @@ void Game::move_tile(int row, int column)
 
 void Game::show_results_table()
 {
+    spdlog::debug("Showing results window");
     _view.show_results_window();
+}
+
+void Game::show_results(int problem_size)
+{
+    const auto results_count = 10; // TODO get from config
+    spdlog::debug("Showing {} results with problem size {}", results_count, problem_size);
+
+    auto results = _model.get_result_table(problem_size);
+    auto res_to_show = _get_n_best_results(results, results_count);
+
+    _view.show_results(res_to_show);
 }
 
 std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
@@ -91,12 +105,49 @@ void Game::_game_won(const Result &result)
     std::time_t tmp = std::chrono::system_clock::to_time_t(result.date);
     auto date = std::ctime(&tmp);
 
-    auto seconds = result.elapsed_time % 60;
-    auto minutes = result.elapsed_time / 60;
-    auto hours = result.elapsed_time / 3600;
+    _view.show_congrats_window(name, _time_from_seconds(result.elapsed_time), date);
+}
 
+std::string Game::_time_from_seconds(int secs)
+{
+    auto seconds = secs % 60;
+    auto minutes = (secs / 60) % 60;
+    auto hours = secs / 3600;
     char time_buf[9] = {0};
+
     std::snprintf(time_buf, 9, "%02d:%02d:%02d", hours, minutes, seconds);
 
-    _view.show_congrats_window(name, {time_buf}, date);
+    return {time_buf};
+}
+
+result_view_t Game::_get_n_best_results(std::vector<Result> &results, int n)
+{
+    if (n > static_cast<int>(results.size())) {
+        n = results.size();
+    }
+
+    std::sort(results.begin(), results.end(), [](auto &l, auto &r) {
+        return l.elapsed_time < r.elapsed_time;
+    });
+
+    result_view_t ret;
+    ret.push_back({"Pozycja", "Czas", "Gracz", "Data"}); // TODO config?
+
+    // transform vector of Result objects to vector of string arrays
+    auto counter = 1;
+    std::transform(results.begin(), results.begin()+n, std::back_inserter(ret),
+        [&counter, this](auto &res) {
+            auto position = std::to_string(counter++);
+            auto time = _time_from_seconds(res.elapsed_time);
+            auto name = res.options.player_name;
+
+            std::time_t tmp = std::chrono::system_clock::to_time_t(res.date);
+            auto date = std::ctime(&tmp);
+
+            std::array<std::string, 4> arr{position, time, name, std::string(date)};
+            return arr;
+        }
+    );
+
+    return ret;
 }

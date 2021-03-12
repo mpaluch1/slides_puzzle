@@ -34,3 +34,8 @@ Result Backend::save_result()
 
     return result;
 }
+
+std::vector<Result> Backend::get_result_table(int problem_size)
+{
+    return _results_table.get(problem_size);
+}

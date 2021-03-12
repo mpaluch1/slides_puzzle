@@ -57,7 +57,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     _box->notify_tile_clicked(row, col);
 }
 
-#include <iostream>
 void MainWindow::_clear_tiles()
 {
     qDeleteAll(ui->gridLayoutWidget->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));

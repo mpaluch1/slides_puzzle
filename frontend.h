@@ -18,6 +18,7 @@ public:
     void display_tiles(const std::map<std::pair<int, int>, int> &tiles);
     void show_congrats_window(const std::string &name, const std::string &time, const std::string &date);
     void show_results_window();
+    void show_results(const result_view_t &to_show);
 
  private:
     NewGameWindow _new_game_window;
