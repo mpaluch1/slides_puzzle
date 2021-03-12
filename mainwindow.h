@@ -25,6 +25,8 @@ protected:
 private slots:
     void on_results_table_button_clicked();
 
+    void on_exit_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 

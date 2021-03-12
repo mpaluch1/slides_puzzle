@@ -67,3 +67,8 @@ void MainWindow::on_results_table_button_clicked()
 {
     _box->notify_show_results_table();
 }
+
+void MainWindow::on_exit_button_clicked()
+{
+    QCoreApplication::quit();
+}
