@@ -29,6 +29,8 @@ private slots:
 
     void on_new_game_button_clicked();
 
+    void on_change_pic_button_clicked();
+
 private:
     Ui::MainWindow *ui;
 

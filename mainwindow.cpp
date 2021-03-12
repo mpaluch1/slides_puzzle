@@ -2,6 +2,7 @@
 
 #include <string>
 
+#include <QFileDialog>
 #include <QMouseEvent>
 #include <QString>
 #include <QtWidgets/QLabel>
@@ -76,4 +77,13 @@ void MainWindow::on_exit_button_clicked()
 void MainWindow::on_new_game_button_clicked()
 {
     _box->notify_restart_game();
+}
+
+#include <iostream>
+void MainWindow::on_change_pic_button_clicked()
+{
+    auto fileName = QFileDialog::getOpenFileName(this,
+        tr("Wybierz obraz"), "", tr("Image Files (*.jpg)"));
+
+    std::cout << fileName.toStdString() << std::endl;
 }
