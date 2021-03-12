@@ -7,6 +7,7 @@ CONFIG += c++17
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+DEFINES += cimg_display=0
 
 SOURCES += \
     backend.cpp \
@@ -60,7 +61,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$PWD/spdlog/build/release/ -lsp
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/spdlog/build/debug/ -lspdlog
 else:unix: LIBS += -L$$PWD/spdlog/build/ -lspdlog
 
-INCLUDEPATH += $$PWD/spdlog/include $$PWD/json/single_include
+INCLUDEPATH += $$PWD/spdlog/include $$PWD/json/single_include $$PWD/CImg
 DEPENDPATH += $$PWD/spdlog/include
 
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/release/libspdlog.a
