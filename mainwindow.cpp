@@ -37,6 +37,7 @@ void MainWindow::display_tiles(const std::map<std::pair<int, int>, int> &tiles)
     }
 }
 
+#include <iostream>
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     QWidget * const widget = childAt(event->pos());
@@ -50,6 +51,10 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 
     const int index = ui->gridLayout->indexOf(widget);
+    if (index == -1) {
+        return;
+    }
+
     auto row = 0;
     auto col = 0;
     auto dummy = 0;
@@ -73,7 +78,6 @@ void MainWindow::_clear_tiles()
     qDeleteAll(ui->gridLayoutWidget->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
 }
 
-
 void MainWindow::on_results_table_button_clicked()
 {
     _game_timer->stop();
@@ -91,7 +95,6 @@ void MainWindow::on_new_game_button_clicked()
     _box->notify_restart_game();
 }
 
-#include <iostream>
 void MainWindow::on_change_pic_button_clicked()
 {
     auto fileName = QFileDialog::getOpenFileName(this,
