@@ -1,7 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <memory>
+
 #include <QMainWindow>
+#include <QTime>
+#include <QTimer>
 
 #include "iabletonotify.h"
 
@@ -21,6 +25,7 @@ public:
 
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
+    virtual void showEvent(QShowEvent* event);
 
 private slots:
     void on_results_table_button_clicked();
@@ -31,8 +36,12 @@ private slots:
 
     void on_change_pic_button_clicked();
 
+    void _update_timer();
+
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<QTimer> _game_timer;
+    QTime _game_time;
 
     void _clear_tiles();
 };

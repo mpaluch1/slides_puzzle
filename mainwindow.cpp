@@ -58,6 +58,16 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     _box->notify_tile_clicked(row, col);
 }
 
+void MainWindow::showEvent(QShowEvent *event)
+{
+    QWidget::showEvent(event);
+    _game_timer = std::make_unique<QTimer>();
+    _game_time = QTime(0, 0, 0);
+
+    connect(_game_timer.get(), SIGNAL(timeout()), this, SLOT(_update_timer()));
+    _game_timer->start(1000);
+}
+
 void MainWindow::_clear_tiles()
 {
     qDeleteAll(ui->gridLayoutWidget->findChildren<QWidget*>("", Qt::FindDirectChildrenOnly));
@@ -66,6 +76,7 @@ void MainWindow::_clear_tiles()
 
 void MainWindow::on_results_table_button_clicked()
 {
+    _game_timer->stop();
     _box->notify_show_results_table();
 }
 
@@ -76,6 +87,7 @@ void MainWindow::on_exit_button_clicked()
 
 void MainWindow::on_new_game_button_clicked()
 {
+    _game_timer->stop();
     _box->notify_restart_game();
 }
 
@@ -86,4 +98,10 @@ void MainWindow::on_change_pic_button_clicked()
         tr("Wybierz obraz"), "", tr("Image Files (*.jpg)"));
 
     std::cout << fileName.toStdString() << std::endl;
+}
+
+void MainWindow::_update_timer()
+{
+    _game_time = _game_time.addSecs(1);
+    ui->time_label->setText(_game_time.toString("hh:mm:ss"));
 }
