@@ -75,7 +75,7 @@ void Game::show_results_table()
 
 void Game::show_results(int problem_size)
 {
-    const auto results_count = 10; // TODO get from config
+    const auto results_count = _config.results_view_count;
     spdlog::debug("Showing {} results with problem size {}", results_count, problem_size);
 
     auto results = _model.get_result_table(problem_size);
@@ -130,7 +130,9 @@ result_view_t Game::_get_n_best_results(std::vector<Result> &results, int n)
     });
 
     result_view_t ret;
-    ret.push_back({"Pozycja", "Czas", "Gracz", "Data"}); // TODO config?
+    std::array<std::string, 4> headers;
+    std::copy(_config.results_view_headers.begin(), _config.results_view_headers.end(), headers.begin());
+    ret.push_back(headers);
 
     // transform vector of Result objects to vector of string arrays
     auto counter = 1;
