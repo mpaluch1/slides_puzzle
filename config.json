@@ -1,0 +1,9 @@
+{
+    "config": {
+        "problem_sizes": [2, 3, 4],
+        "results_view_count": 10,
+        "results_view_headers": ["Pozycja", "Czas", "Gracz", "Data"],
+        "results_filename": ".results.json",
+        "default_shuffle_moves_count": 100
+    }
+}
