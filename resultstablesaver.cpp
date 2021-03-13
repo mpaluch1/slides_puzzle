@@ -7,15 +7,15 @@
 
 #include "resultstable.h"
 
-ResultsTableSaver::ResultsTableSaver(const std::string &save_filename)
-    : _filename{save_filename}
+ResultsTableSaver::ResultsTableSaver(const Config &config)
+    : IHaveConfig(config)
 {
 
 }
 
 void ResultsTableSaver::update(const res_table_t &table)
 {
-    std::ofstream ofs(_filename, std::ios::out | std::ios::binary);
+    std::ofstream ofs(_config.results_filename, std::ios::out | std::ios::binary);
 
     if (!ofs) {
         spdlog::warn("Can't open results file!");
@@ -25,22 +25,22 @@ void ResultsTableSaver::update(const res_table_t &table)
     const auto to_save = _convert_to_json(table);
     ofs << to_save;
 
-    spdlog::debug("Saved {} results to {}", _get_records_count(to_save), _filename);
+    spdlog::debug("Saved {} results to {}", _get_records_count(to_save), _config.results_filename);
 }
 
 res_table_t ResultsTableSaver::load()
 {
-    std::ifstream in(_filename);
+    std::ifstream in(_config.results_filename);
 
     if (!in) {
-        spdlog::warn("Couldn't load results table from {}", _filename);
+        spdlog::warn("Couldn't load results table from {}", _config.results_filename);
         return {};
     }
 
     nlohmann::json j;
     in >> j;
 
-    spdlog::debug("Loaded {} results from {}", _get_records_count(j), _filename);
+    spdlog::debug("Loaded {} results from {}", _get_records_count(j), _config.results_filename);
 
     return _convert_from_json(j);
 }

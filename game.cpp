@@ -11,6 +11,7 @@
 Game::Game(const Config &config)
     : IHaveConfig(config)
     , _view(config)
+    , _model(config)
 {
     _box = std::make_shared<NotificationBox>(*this);
 }

@@ -6,15 +6,16 @@
 
 #include "gameoptions.h"
 #include "gamestate.h"
+#include "ihaveconfig.h"
 #include "resultstable.h"
 #include "tilestable.h"
 
 class Result;
 
-class Backend
+class Backend: public IHaveConfig
 {
 public:
-    Backend();
+    Backend(const Config &config);
 
     void start_new_game(const GameOptions &options);
     tile_matrix get_tiles();

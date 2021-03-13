@@ -4,7 +4,9 @@
 
 #include <spdlog/spdlog.h>
 
-ResultsTable::ResultsTable()
+ResultsTable::ResultsTable(const Config &config)
+    : IHaveConfig(config)
+    , _saver(config)
 {
     _table = _saver.load();
 }

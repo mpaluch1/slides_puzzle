@@ -2,7 +2,9 @@
 
 #include "result.h"
 
-Backend::Backend()
+Backend::Backend(const Config &config)
+    : IHaveConfig(config)
+    , _results_table(config)
 {
 
 }
