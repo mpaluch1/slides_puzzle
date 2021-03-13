@@ -3,6 +3,7 @@
 Frontend::Frontend(const Config &config)
     : IHaveConfig(config)
     , _new_game_window(config)
+    , _results_window(config)
 {
 
 }

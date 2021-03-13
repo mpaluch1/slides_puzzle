@@ -8,19 +8,20 @@
 #include <QDialog>
 
 #include "iabletonotify.h"
+#include "ihaveconfig.h"
 
-using result_view_t = std::vector<std::array<std::string, 4>>; // TODO from config?
+using result_view_t = std::vector<std::array<std::string, 4>>;
 
 namespace Ui {
 class ResultsWindow;
 }
 
-class ResultsWindow : public QDialog, public IAbleToNotify
+class ResultsWindow : public QDialog, public IAbleToNotify, public IHaveConfig
 {
     Q_OBJECT
 
 public:
-    explicit ResultsWindow(QWidget *parent = nullptr);
+    explicit ResultsWindow(const Config &config, QWidget *parent = nullptr);
     ~ResultsWindow();
 
     void show_results(const result_view_t &to_show);

@@ -3,12 +3,22 @@
 
 #include <QTableWidget>
 
-ResultsWindow::ResultsWindow(QWidget *parent) :
+#include <algorithm>
+
+ResultsWindow::ResultsWindow(const Config &config, QWidget *parent) :
     QDialog(parent),
+    IHaveConfig(config),
     ui(new Ui::ResultsWindow)
 {
     ui->setupUi(this);
-    ui->size_choice->addItems(QStringList({"2", "3", "4"})); // TODO from config
+
+    QStringList list;
+    std::transform(_config.problem_sizes.begin(), _config.problem_sizes.end(),
+                   std::back_inserter(list), [](auto el){
+        return QString::number(el);
+    });
+
+    ui->size_choice->addItems(list);
 }
 
 ResultsWindow::~ResultsWindow()
@@ -23,8 +33,10 @@ void ResultsWindow::on_exit_button_clicked()
 
 void ResultsWindow::on_show_results_button_clicked()
 {
-    auto size = ui->size_choice->currentIndex() + 2;
-    _box->notify_show_results(size); // TODO Change me^
+    auto idx = ui->size_choice->currentIndex();
+    auto size = _config.problem_sizes[idx];
+
+    _box->notify_show_results(size);
 }
 
 void ResultsWindow::show_results(const result_view_t &to_show)
