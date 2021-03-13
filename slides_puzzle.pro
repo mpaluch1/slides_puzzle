@@ -14,6 +14,7 @@ QMAKE_CXXFLAGS += -Wno-null-pointer-arithmetic -Wno-char-subscripts
 
 SOURCES += \
     backend.cpp \
+    config.cpp \
     congratswindow.cpp \
     frontend.cpp \
     game.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     backend.h \
+    config.h \
     congratswindow.h \
     frontend.h \
     game.h \
