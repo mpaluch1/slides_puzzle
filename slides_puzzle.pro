@@ -64,7 +64,7 @@ win32:CONFIG(release, debug|release): LIBS += -L$$PWD/spdlog/build/release/ -lsp
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/spdlog/build/debug/ -lspdlog
 else:unix: LIBS += -L$$PWD/spdlog/build/ -lspdlog
 
-INCLUDEPATH += $$PWD/spdlog/include $$PWD/json/single_include $$PWD/CImg
+INCLUDEPATH += $$PWD/spdlog/include $$PWD/json/single_include $$PWD/CImg $$PWD/cxxopts/include
 DEPENDPATH += $$PWD/spdlog/include
 
 win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/spdlog/build/release/libspdlog.a
