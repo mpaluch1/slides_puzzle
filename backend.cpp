@@ -11,7 +11,7 @@ Backend::Backend(const Config &config)
 
 void Backend::start_new_game(const GameOptions &options)
 {
-    _state = std::make_unique<GameState>(options);
+    _state = std::make_unique<GameState>(_config, options);
 }
 
 tile_matrix Backend::get_tiles()

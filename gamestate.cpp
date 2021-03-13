@@ -6,8 +6,10 @@
 
 #include "result.h"
 
-GameState::GameState(const GameOptions &options)
-    : _options(options)
+GameState::GameState(const Config &config, const GameOptions &options)
+    : IHaveConfig(config)
+    , _options(options)
+    , _tiles_table(config)
 {
     _tiles_table.set_table_size(_options.problem_size);
     _tiles_table.shuffle();

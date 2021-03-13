@@ -5,17 +5,18 @@
 #include <vector>
 #include <utility>
 
+#include "ihaveconfig.h"
 #include "tile.h"
 
 using tile_matrix = std::vector<std::vector<Tile>>;
 
-class TilesTable
+class TilesTable: public IHaveConfig
 {
 public:
-    TilesTable();
+    TilesTable(const Config &config);
 
     void set_table_size(int size);
-    void shuffle(int moves = 50); //TODO change magic number
+    void shuffle();
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
     bool is_solved();

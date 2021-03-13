@@ -4,14 +4,15 @@
 #include <chrono>
 
 #include "gameoptions.h"
+#include "ihaveconfig.h"
 #include "tilestable.h"
 
 class Result;
 
-class GameState
+class GameState: public IHaveConfig
 {
 public:
-    GameState(const GameOptions &options);
+    GameState(const Config &config, const GameOptions &options);
 
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
