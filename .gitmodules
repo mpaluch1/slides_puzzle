@@ -7,3 +7,6 @@
 [submodule "CImg"]
 	path = CImg
 	url = https://github.com/dtschump/CImg
+[submodule "cxxopts"]
+	path = cxxopts
+	url = https://github.com/jarro2783/cxxopts
