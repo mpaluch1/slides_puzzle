@@ -2,8 +2,13 @@
 #include "newgamewindow.h"
 #include "ui_newgamewindow.h"
 
-NewGameWindow::NewGameWindow(QWidget *parent) :
+#include <algorithm>
+
+#include <QMessageBox>
+
+NewGameWindow::NewGameWindow(const Config &config, QWidget *parent) :
     QDialog(parent),
+    IHaveConfig(config),
     ui(new Ui::NewGameWindow)
 {
     ui->setupUi(this);
@@ -17,15 +22,28 @@ NewGameWindow::~NewGameWindow()
 
 void NewGameWindow::_setup()
 {
-    ui->problem_size_combo_box->addItems(QStringList({"2", "3", "4"}));
+    QStringList list;
+    std::transform(_config.problem_sizes.begin(), _config.problem_sizes.end(),
+                   std::back_inserter(list), [](auto el){
+        return QString::number(el);
+    });
+
+    ui->problem_size_combo_box->addItems(list);
 }
 
 void NewGameWindow::on_play_button_clicked()
 {
-    // TODO do not take empty or default names
     auto player_name = ui->name_text_edit->toPlainText();
-    // TODO Change me to use model from somewhere
-    auto problem_size = ui->problem_size_combo_box->currentIndex() + 2;
+    if (player_name.isEmpty()) {
+        QMessageBox msgBox;
+        msgBox.setText("Imię nie może być puste.");
+        msgBox.exec();
+
+        return;
+    }
+
+    auto idx = ui->problem_size_combo_box->currentIndex();
+    auto problem_size = _config.problem_sizes[idx];
 
     _box->notify_new_game(player_name.toStdString(), problem_size);
 }

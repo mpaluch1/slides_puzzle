@@ -1,6 +1,8 @@
 #include "frontend.h"
 
-Frontend::Frontend()
+Frontend::Frontend(const Config &config)
+    : IHaveConfig(config)
+    , _new_game_window(config)
 {
 
 }

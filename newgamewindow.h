@@ -3,17 +3,18 @@
 
 #include <QDialog>
 #include "iabletonotify.h"
+#include "ihaveconfig.h"
 
 namespace Ui {
 class NewGameWindow;
 }
 
-class NewGameWindow : public QDialog, public IAbleToNotify
+class NewGameWindow : public QDialog, public IAbleToNotify, public IHaveConfig
 {
     Q_OBJECT
 
 public:
-    explicit NewGameWindow(QWidget *parent = nullptr);
+    explicit NewGameWindow(const Config &config, QWidget *parent = nullptr);
     ~NewGameWindow();
 
 private slots:
