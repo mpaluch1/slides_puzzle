@@ -21,6 +21,7 @@ SOURCES += \
     gameoptions.cpp \
     gamestate.cpp \
     iabletonotify.cpp \
+    ihaveconfig.cpp \
     main.cpp \
     mainwindow.cpp \
     newgamewindow.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     gameoptions.h \
     gamestate.h \
     iabletonotify.h \
+    ihaveconfig.h \
     mainwindow.h \
     newgamewindow.h \
     notificationbox.h \

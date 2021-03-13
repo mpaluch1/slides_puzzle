@@ -9,13 +9,14 @@
 #include "backend.h"
 #include "frontend.h"
 #include "gameoptions.h"
+#include "ihaveconfig.h"
 
 class Result;
 
-class Game
+class Game: public IHaveConfig
 {
 public:
-    Game();
+    Game(const Config &config);
     void start();
 
     void new_game(const std::string &name, int size);

@@ -9,7 +9,7 @@
 struct ConfigNotFoundException: public std::exception {
     const char * what() const throw ()
     {
-        return "Config file not found";
+        return "Config file not found. Did you provide path to config file or is config file present in application directory?";
     }
 };
 

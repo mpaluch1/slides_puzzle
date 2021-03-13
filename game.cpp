@@ -8,7 +8,8 @@
 
 #include "result.h"
 
-Game::Game()
+Game::Game(const Config &config)
+    : IHaveConfig(config)
 {
     _box = std::make_shared<NotificationBox>(*this);
 }
