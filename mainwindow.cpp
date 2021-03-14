@@ -30,6 +30,7 @@ void MainWindow::display_tiles(const std::map<std::pair<int, int>, std::string> 
 
     for (const auto &tile : tiles) {
         auto label = new QLabel(ui->gridLayoutWidget);
+        label->setScaledContents(true);
         if (!tile.second.empty()) {
             auto pic = QPixmap(QString::fromStdString(tile.second));
             label->setPixmap(pic);
