@@ -9,8 +9,8 @@
 
 #include <spdlog/spdlog.h>
 
-TilesTable::TilesTable(const Config &config)
-    : IHaveConfig(config)
+TilesTable::TilesTable(int shuffle_count)
+    : _shuffle_count{shuffle_count}
 {
 
 }
@@ -37,7 +37,7 @@ void TilesTable::shuffle()
 
     auto empty_idx = _get_tile_with_index(-1);
     // for every move count
-    auto moves = _config.default_shuffle_moves_count;
+    auto moves = _shuffle_count;
     while (moves--) {
         auto swapable = false;
         std::pair<int, int> swap_vec;

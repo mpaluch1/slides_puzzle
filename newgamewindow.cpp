@@ -6,10 +6,10 @@
 
 #include <QMessageBox>
 
-NewGameWindow::NewGameWindow(const Config &config, QWidget *parent) :
+NewGameWindow::NewGameWindow(const std::vector<int> &sizes, QWidget *parent) :
     QDialog(parent),
-    IHaveConfig(config),
-    ui(new Ui::NewGameWindow)
+    ui(new Ui::NewGameWindow),
+    _sizes{sizes}
 {
     ui->setupUi(this);
     _setup();
@@ -23,7 +23,7 @@ NewGameWindow::~NewGameWindow()
 void NewGameWindow::_setup()
 {
     QStringList list;
-    std::transform(_config.problem_sizes.begin(), _config.problem_sizes.end(),
+    std::transform(_sizes.begin(), _sizes.end(),
                    std::back_inserter(list), [](auto el){
         return QString::number(el);
     });
@@ -43,7 +43,7 @@ void NewGameWindow::on_play_button_clicked()
     }
 
     auto idx = ui->problem_size_combo_box->currentIndex();
-    auto problem_size = _config.problem_sizes[idx];
+    auto problem_size = _sizes[idx];
 
     _box->notify_new_game(player_name.toStdString(), problem_size);
 }

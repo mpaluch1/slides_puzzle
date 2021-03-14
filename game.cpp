@@ -9,9 +9,9 @@
 #include "result.h"
 
 Game::Game(const Config &config)
-    : IHaveConfig(config)
-    , _view(config)
-    , _model(config)
+    : _config{config}
+    , _view{config.problem_sizes}
+    , _model{config.results_filename}
 {
     _box = std::make_shared<NotificationBox>(*this);
 }
@@ -31,7 +31,7 @@ void Game::new_game(const std::string &name, int size)
     auto options = GameOptions(name, size);
     _cached_options = std::make_unique<GameOptions>(options);
 
-    _model.start_new_game(options);
+    _model.start_new_game(options, _config.default_shuffle_moves_count);
     _view.show_game_window();
     _view.display_tiles(_transform_tiles_for_frontend());
 }
@@ -46,7 +46,7 @@ void Game::renew_game()
     spdlog::info("Recreating game with name {} and size {}",
                  _cached_options->player_name, _cached_options->problem_size);
 
-    _model.start_new_game(*_cached_options);
+    _model.start_new_game(*_cached_options, _config.default_shuffle_moves_count);
     _view.show_game_window();
     _view.display_tiles(_transform_tiles_for_frontend());
 }

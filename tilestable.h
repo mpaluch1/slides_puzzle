@@ -5,15 +5,14 @@
 #include <vector>
 #include <utility>
 
-#include "ihaveconfig.h"
 #include "tile.h"
 
 using tile_matrix = std::vector<std::vector<Tile>>;
 
-class TilesTable: public IHaveConfig
+class TilesTable
 {
 public:
-    TilesTable(const Config &config);
+    TilesTable(int shuffle_count);
 
     void set_table_size(int size);
     void shuffle();
@@ -24,6 +23,7 @@ public:
     void print_state();
 
 private:
+    int _shuffle_count;
     tile_matrix _table;
     const std::array<std::pair<int, int>, 4> _legal_dir_vecs = {{
         {0, -1},

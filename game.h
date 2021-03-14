@@ -7,13 +7,13 @@
 #include <utility>
 
 #include "backend.h"
+#include "config.h"
 #include "frontend.h"
 #include "gameoptions.h"
-#include "ihaveconfig.h"
 
 class Result;
 
-class Game: public IHaveConfig
+class Game
 {
 public:
     Game(const Config &config);
@@ -26,6 +26,8 @@ public:
     void show_results(int problem_size);
 
 private:
+    const Config _config;
+
     std::shared_ptr<NotificationBox> _box;
     Frontend _view;
     Backend _model;

@@ -8,7 +8,6 @@
 #include <QDialog>
 
 #include "iabletonotify.h"
-#include "ihaveconfig.h"
 
 using result_view_t = std::vector<std::array<std::string, 4>>;
 
@@ -16,12 +15,12 @@ namespace Ui {
 class ResultsWindow;
 }
 
-class ResultsWindow : public QDialog, public IAbleToNotify, public IHaveConfig
+class ResultsWindow : public QDialog, public IAbleToNotify
 {
     Q_OBJECT
 
 public:
-    explicit ResultsWindow(const Config &config, QWidget *parent = nullptr);
+    explicit ResultsWindow(const std::vector<int> &sizes, QWidget *parent = nullptr);
     ~ResultsWindow();
 
     void show_results(const result_view_t &to_show);
@@ -33,6 +32,7 @@ private slots:
 
 private:
     Ui::ResultsWindow *ui;
+    const std::vector<int> _sizes;
 };
 
 #endif // RESULTSWINDOW_H

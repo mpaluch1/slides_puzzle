@@ -3,16 +3,15 @@
 
 #include "congratswindow.h"
 #include "iabletonotify.h"
-#include "ihaveconfig.h"
 #include "mainwindow.h"
 #include "newgamewindow.h"
 #include "resultswindow.h"
 
 class Frontend
-    : public IAbleToNotify, public IHaveConfig
+    : public IAbleToNotify
 {
 public:
-    Frontend(const Config &config);
+    Frontend(const std::vector<int> &sizes);
 
     void start();
     void show_game_window();

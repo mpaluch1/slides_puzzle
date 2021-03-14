@@ -6,18 +6,17 @@
 
 #include "gameoptions.h"
 #include "gamestate.h"
-#include "ihaveconfig.h"
 #include "resultstable.h"
 #include "tilestable.h"
 
 class Result;
 
-class Backend: public IHaveConfig
+class Backend
 {
 public:
-    Backend(const Config &config);
+    Backend(const std::string &res_filename);
 
-    void start_new_game(const GameOptions &options);
+    void start_new_game(const GameOptions &options, int shuffle_count);
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
     bool is_solved();

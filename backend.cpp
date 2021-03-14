@@ -2,16 +2,15 @@
 
 #include "result.h"
 
-Backend::Backend(const Config &config)
-    : IHaveConfig(config)
-    , _results_table(config)
+Backend::Backend(const std::string &res_filename)
+    : _results_table{res_filename}
 {
 
 }
 
-void Backend::start_new_game(const GameOptions &options)
+void Backend::start_new_game(const GameOptions &options, int shuffle_count)
 {
-    _state = std::make_unique<GameState>(_config, options);
+    _state = std::make_unique<GameState>(shuffle_count, options);
 }
 
 tile_matrix Backend::get_tiles()

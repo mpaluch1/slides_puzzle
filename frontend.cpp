@@ -1,9 +1,8 @@
 #include "frontend.h"
 
-Frontend::Frontend(const Config &config)
-    : IHaveConfig(config)
-    , _new_game_window(config)
-    , _results_window(config)
+Frontend::Frontend(const std::vector<int> &sizes)
+    : _new_game_window(sizes)
+    , _results_window(sizes)
 {
 
 }

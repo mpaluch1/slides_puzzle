@@ -4,16 +4,15 @@
 #include <map>
 #include <vector>
 
-#include "ihaveconfig.h"
 #include "result.h"
 #include "resultstablesaver.h"
 
 using res_table_t = std::map<int, std::vector<Result>>;
 
-class ResultsTable: public IHaveConfig
+class ResultsTable
 {
 public:
-    ResultsTable(const Config &config);
+    ResultsTable(const std::string &res_filename);
 
     void add(const Result &result);
     std::vector<Result> get(int problem_size);
