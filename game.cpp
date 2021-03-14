@@ -88,15 +88,15 @@ void Game::show_results(int problem_size)
     _view.show_results(res_to_show);
 }
 
-std::map<std::pair<int, int>, int> Game::_transform_tiles_for_frontend()
+std::map<std::pair<int, int>, std::string> Game::_transform_tiles_for_frontend()
 {
     auto tiles = _model.get_tiles();
     int n = tiles.size();
-    auto tiles_map = std::map<std::pair<int, int>, int>();
+    auto tiles_map = std::map<std::pair<int, int>, std::string>();
 
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
-            tiles_map[{i, j}] = tiles[i][j].index;
+            tiles_map[{i, j}] = tiles[i][j].image_path;
         }
     }
 

@@ -27,7 +27,7 @@ void Frontend::show_game_window()
     _main_window.show();
 }
 
-void Frontend::display_tiles(const std::map<std::pair<int, int>, int> &tiles)
+void Frontend::display_tiles(const std::map<std::pair<int, int>, std::string> &tiles)
 {
     _main_window.display_tiles(tiles);
 }

@@ -33,7 +33,7 @@ private:
     Backend _model;
     std::unique_ptr<GameOptions> _cached_options;
 
-    std::map<std::pair<int, int>, int> _transform_tiles_for_frontend();
+    std::map<std::pair<int, int>, std::string> _transform_tiles_for_frontend();
     void _game_won(const Result &result);
     std::string _time_from_seconds(int secs);
     result_view_t _get_n_best_results(std::vector<Result> &results, int n);

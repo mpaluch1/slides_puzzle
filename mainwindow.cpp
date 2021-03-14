@@ -4,6 +4,7 @@
 
 #include <QFileDialog>
 #include <QMouseEvent>
+#include <QPixmap>
 #include <QString>
 #include <QtWidgets/QLabel>
 
@@ -21,18 +22,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::display_tiles(const std::map<std::pair<int, int>, int> &tiles)
+void MainWindow::display_tiles(const std::map<std::pair<int, int>, std::string> &tiles)
 {
     _clear_tiles();
 
     for (const auto &tile : tiles) {
         auto label = new QLabel(ui->gridLayoutWidget);
-        auto idx = std::to_string(tile.second);
+        if (!tile.second.empty()) {
+            auto pic = QPixmap(QString::fromStdString(tile.second));
+            label->setPixmap(pic);
+        }
 
-        label->setText(QString::fromStdString(idx));
-        label->setAlignment(Qt::AlignCenter);
-        label->setFrameStyle(QFrame::Plain | QFrame::Box);
-        label->setLineWidth(2);
         ui->gridLayout->addWidget(label, tile.first.first, tile.first.second);
     }
 }

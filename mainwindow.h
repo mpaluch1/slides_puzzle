@@ -21,7 +21,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void display_tiles(const std::map<std::pair<int, int>, int> &tiles);
+    void display_tiles(const std::map<std::pair<int, int>, std::string> &tiles);
 
 protected:
     virtual void mousePressEvent(QMouseEvent *event);
