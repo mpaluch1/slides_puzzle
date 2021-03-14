@@ -10,7 +10,7 @@ CONFIG += sdk_no_version_check
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 DEFINES += cimg_display=0
 
-QMAKE_CXXFLAGS += -Wno-null-pointer-arithmetic -Wno-char-subscripts
+QMAKE_CXXFLAGS += -Wno-null-pointer-arithmetic -Wno-char-subscripts -Wno-class-memaccess
 
 SOURCES += \
     backend.cpp \
@@ -25,6 +25,7 @@ SOURCES += \
     mainwindow.cpp \
     newgamewindow.cpp \
     notificationbox.cpp \
+    picture.cpp \
     result.cpp \
     resultstable.cpp \
     resultstablesaver.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     mainwindow.h \
     newgamewindow.h \
     notificationbox.h \
+    picture.h \
     result.h \
     resultstable.h \
     resultstablesaver.h \

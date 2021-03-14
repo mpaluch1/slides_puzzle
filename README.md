@@ -1,5 +1,8 @@
 # Slides puzzle
 
+## You need to install these packages
+* ImageMagick
+
 ## Setup (Linux only)
 ```shell
 $ git clone https://github.com/mpaluch1/slides_puzzle
