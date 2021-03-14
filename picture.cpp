@@ -7,13 +7,20 @@ Picture::Picture(const std::string &filename)
     _image = cimg_library::CImg<unsigned char>(filename.c_str());
 }
 
-void Picture::save_fragmented(const std::string &save_dirname, int count)
+std::map<int, std::string> Picture::save_fragmented(const std::string &save_dirname, int count)
 {
     auto fragments = _fragment_image(count);
+    std::map<int, std::string> ret;
 
     for (unsigned i = 0; i < fragments.size(); ++i) {
-        fragments[i].save_jpeg((save_dirname + '/' + std::to_string(i) + ".jpg").c_str());
+        auto path = save_dirname + '/' + std::to_string(i) + ".jpg";
+        fragments[i].save_jpeg(path.c_str());
+        ret[i] = path;
+
+        spdlog::debug("Saved image fragment {} in path {}", i, path);
     }
+
+    return ret;
 }
 
 std::vector<img_t> Picture::_fragment_image(int count)

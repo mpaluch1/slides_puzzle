@@ -1,6 +1,7 @@
 #ifndef PICTURE_H
 #define PICTURE_H
 
+#include <map>
 #include <string>
 
 #include <CImg.h>
@@ -11,7 +12,7 @@ class Picture
 {
 public:
     Picture(const std::string &filename);
-    void save_fragmented(const std::string &save_dirname, int count);
+    std::map<int, std::string> save_fragmented(const std::string &save_dirname, int count);
 
 private:
     img_t _image;

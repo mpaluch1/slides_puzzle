@@ -118,6 +118,20 @@ bool TilesTable::is_solved()
     return true;
 }
 
+void TilesTable::set_image_fragment_paths(const std::map<int, std::string> &paths)
+{
+    for (auto &elements : _table) {
+        for (auto &el : elements) {
+            int idx = el.index;
+            if (idx == -1) {
+                continue;
+            }
+
+            el.image_path = paths.at(idx);
+        }
+    }
+}
+
 void TilesTable::print_state()
 {
     spdlog::debug("State of tiles table:");

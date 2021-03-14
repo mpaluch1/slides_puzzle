@@ -4,6 +4,7 @@
 
 #include <spdlog/spdlog.h>
 
+#include "picture.h"
 #include "result.h"
 
 GameState::GameState(int shuffle_count, const GameOptions &options)
@@ -41,4 +42,18 @@ Result GameState::save_result()
     auto now_real_time = std::chrono::system_clock::now();
 
     return Result(elapsed_time.count(), now_real_time, _options);
+}
+
+void GameState::set_picture(const std::string &path)
+{
+    auto pic = Picture(path);
+
+    std::string directory;
+    const size_t last_slash_idx = path.rfind('/');
+    if (std::string::npos != last_slash_idx) {
+        directory = path.substr(0, last_slash_idx);
+    }
+
+    auto paths = pic.save_fragmented(directory, _options.problem_size);
+    _tiles_table.set_image_fragment_paths(paths);
 }

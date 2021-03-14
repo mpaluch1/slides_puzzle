@@ -22,6 +22,7 @@ public:
     bool is_solved();
     Result save_result();
     std::vector<Result> get_result_table(int problem_size);
+    void set_picture(const std::string &path);
 
 private:
     std::unique_ptr<GameState> _state;

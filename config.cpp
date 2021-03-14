@@ -29,4 +29,5 @@ Config::Config(const std::string &filename)
     results_view_headers = j["config"]["results_view_headers"].get<std::vector<std::string>>();
     results_filename = j["config"]["results_filename"].get<std::string>();
     default_shuffle_moves_count = j["config"]["default_shuffle_moves_count"].get<int>();
+    default_image = j["config"]["default_image"].get<std::string>();
 }

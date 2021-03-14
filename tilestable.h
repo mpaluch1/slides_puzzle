@@ -3,6 +3,8 @@
 
 #include <array>
 #include <vector>
+#include <map>
+#include <string>
 #include <utility>
 
 #include "tile.h"
@@ -19,6 +21,7 @@ public:
     tile_matrix get_tiles();
     bool move_tile(int row, int col);
     bool is_solved();
+    void set_image_fragment_paths(const std::map<int, std::string> &paths);
 
     void print_state();
 

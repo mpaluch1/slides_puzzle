@@ -13,6 +13,7 @@ struct Config
     std::vector<std::string> results_view_headers;
     std::string results_filename;
     int default_shuffle_moves_count;
+    std::string default_image;
 };
 
 #endif // CONFIG_H

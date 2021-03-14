@@ -17,6 +17,7 @@ public:
     bool move_tile(int row, int col);
     bool is_solved();
     Result save_result();
+    void set_picture(const std::string &path);
 
 private:
     GameOptions _options;

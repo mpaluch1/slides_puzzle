@@ -40,3 +40,8 @@ std::vector<Result> Backend::get_result_table(int problem_size)
 {
     return _results_table.get(problem_size);
 }
+
+void Backend::set_picture(const std::string &path)
+{
+    _state->set_picture(path);
+}
