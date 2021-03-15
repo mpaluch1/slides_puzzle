@@ -7,7 +7,7 @@
 #include "config.h"
 
 namespace {
-constexpr auto def_conf_filename = "config.json";
+constexpr auto def_conf_filename = "../config.json";
 }
 
 int main(int argc, char *argv[])
