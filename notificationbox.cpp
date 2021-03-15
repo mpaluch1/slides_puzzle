@@ -37,3 +37,8 @@ void NotificationBox::notify_show_results(int problem_size)
 {
     _game.show_results(problem_size);
 }
+
+void NotificationBox::notify_change_picture(const std::string &new_pic)
+{
+    _game.change_picture(new_pic);
+}

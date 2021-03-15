@@ -16,6 +16,7 @@ public:
     void notify_tile_clicked(int row, int column);
     void notify_show_results_table();
     void notify_show_results(int problem_size);
+    void notify_change_picture(const std::string &new_pic);
 
 private:
     Game &_game;

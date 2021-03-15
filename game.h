@@ -24,6 +24,7 @@ public:
     void move_tile(int row, int column);
     void show_results_table();
     void show_results(int problem_size);
+    void change_picture(const std::string &new_pic);
 
 private:
     const Config _config;

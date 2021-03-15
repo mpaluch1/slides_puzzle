@@ -88,6 +88,12 @@ void Game::show_results(int problem_size)
     _view.show_results(res_to_show);
 }
 
+void Game::change_picture(const std::string &new_pic)
+{
+    _model.set_picture(new_pic);
+    _view.display_tiles(_transform_tiles_for_frontend());
+}
+
 std::map<std::pair<int, int>, std::string> Game::_transform_tiles_for_frontend()
 {
     auto tiles = _model.get_tiles();

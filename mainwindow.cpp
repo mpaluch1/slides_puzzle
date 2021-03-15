@@ -40,7 +40,6 @@ void MainWindow::display_tiles(const std::map<std::pair<int, int>, std::string> 
     }
 }
 
-#include <iostream>
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     QWidget * const widget = childAt(event->pos());
@@ -103,7 +102,7 @@ void MainWindow::on_change_pic_button_clicked()
     auto fileName = QFileDialog::getOpenFileName(this,
         tr("Wybierz obraz"), "", tr("Image Files (*.jpg)"));
 
-    std::cout << fileName.toStdString() << std::endl;
+    _box->notify_change_picture(fileName.toStdString());
 }
 
 void MainWindow::_update_timer()
